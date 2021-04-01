@@ -7,6 +7,14 @@
         display: flex;
         justify-content: flex-end;
         cursor: pointer;
+        position: fixed;
+        right: 18px;
+        .styleLogout{
+            background: #fc01ff;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+        }
     }
     .listParent{
         padding: 10px 40px;

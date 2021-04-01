@@ -2,7 +2,6 @@ import React,{useEffect,useState} from 'react'
 import { useDispatch } from "react-redux";
 import {connect} from 'react-redux'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Skeleton from '@material-ui/lab/Skeleton';
 
 import UsersList from './components/UsersList'
 import SkeletonLoader from './components/SkeletonLoader'
@@ -48,10 +47,13 @@ const Home = (props) => {
 
   return (
     <div className="homeContainer">
-        <div className="logout" onClick={logout}>Logout</div>
+        <div className="logout" onClick={logout}>
+          <div className="styleLogout">Logout</div>
+        </div>
         <div className="listParent">
           {
-            fetchUserLoading ? <SkeletonLoader /> : <InfiniteScroll
+            fetchUserLoading ? <SkeletonLoader /> 
+            : <InfiniteScroll
             scrollableTarget="albumContainer"
             dataLength={usersList && usersList.length} //This is important field to render the next data
             hasMore={true}
@@ -60,18 +62,8 @@ const Home = (props) => {
             next={fetchMoreUsersList}
           >
             <UsersList usersList={usersList} />
-        </InfiniteScroll>
+          </InfiniteScroll>
           }
-              <InfiniteScroll
-                scrollableTarget="albumContainer"
-                dataLength={usersList && usersList.length} //This is important field to render the next data
-                hasMore={true}
-                loader={fetchUserLoading ? <SkeletonLoader /> : ''}
-                scrollThreshold={0.9}
-                next={fetchMoreUsersList}
-              >
-                <UsersList usersList={usersList} />
-            </InfiniteScroll>
         </div>
     </div>
   )
