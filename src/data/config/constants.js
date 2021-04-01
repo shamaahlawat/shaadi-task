@@ -1,9 +1,7 @@
 export const ROUTE_PATH = {
   AUTH: '/auth',
   LOGIN: '/auth/login',
-  SIGNUP: '/auth/signup',
-  HOME: '/',
-  PROFILE: '/profile'
+  HOME: '/home',
 }
 
 export const LOCAL_STORAGE = {
