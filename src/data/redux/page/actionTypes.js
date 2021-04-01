@@ -1,0 +1,1 @@
+export const UPDATE_PAGE_STATE = 'UPDATE_PAGE_STATE'

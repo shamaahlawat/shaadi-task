@@ -1,0 +1,26 @@
+.homeContainer{
+    padding: 20px;
+    .flex{
+        display: flex;
+    }
+    .logout{
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+    }
+    .listParent{
+        padding: 10px 40px;
+        width: 50%;
+        border: 1px solid grey;
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+        .listChild{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0px;
+            border-bottom: 1px solid grey;
+        }
+    }
+}
