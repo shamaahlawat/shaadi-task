@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { RESET_REDUX_STATE, UPDATE_AUTH_STATE,FETCHING_USERS_LIST,USERS_LIST_FETCHED,MORE_USERS_FETCHED } from './actionTypes'
+import { RESET_REDUX_STATE, UPDATE_AUTH_STATE,USERS_LIST_FETCHED,MORE_USERS_FETCHED } from './actionTypes'
 import { setDataInLocalStorage } from '../dataUtility'
 import { LOCAL_STORAGE } from '../../config/constants'
 import { uniqueId } from '../../config/utils'
