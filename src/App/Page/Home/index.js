@@ -2,6 +2,10 @@ import React,{useEffect,useState} from 'react'
 import { useDispatch } from "react-redux";
 import {connect} from 'react-redux'
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Skeleton from '@material-ui/lab/Skeleton';
+
+import UsersList from './components/UsersList'
+import SkeletonLoader from './components/SkeletonLoader'
 
 import { resetReduxState ,fetchListData,fetchMoreListData} from '../../../data/redux/auth/actions'
 
@@ -14,8 +18,8 @@ const Home = (props) => {
 
   const [usersList,setUsersList] = useState([])
   const [currentPage,setCurrentPage] = useState(1)
+  const [fetchUserLoading,setfetchUserLoading] = useState(false)
 
-  console.log('usersList',usersList)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,6 +28,7 @@ const Home = (props) => {
 
   useEffect(() => {
     setUsersList(authDetails.userDetails)
+    setfetchUserLoading(authDetails.fetchUserLoading)
   },[authDetails])
 
   useEffect(() => {
@@ -45,22 +50,27 @@ const Home = (props) => {
     <div className="homeContainer">
         <div className="logout" onClick={logout}>Logout</div>
         <div className="listParent">
-           <InfiniteScroll
+          {
+            fetchUserLoading ? <SkeletonLoader /> : <InfiniteScroll
+            scrollableTarget="albumContainer"
+            dataLength={usersList && usersList.length} //This is important field to render the next data
+            hasMore={true}
+            loader={fetchUserLoading ? <SkeletonLoader /> : ''}
+            scrollThreshold={0.9}
+            next={fetchMoreUsersList}
+          >
+            <UsersList usersList={usersList} />
+        </InfiniteScroll>
+          }
+              <InfiniteScroll
                 scrollableTarget="albumContainer"
                 dataLength={usersList && usersList.length} //This is important field to render the next data
                 hasMore={true}
-                loader={<div>loading .....</div>}
+                loader={fetchUserLoading ? <SkeletonLoader /> : ''}
                 scrollThreshold={0.9}
                 next={fetchMoreUsersList}
               >
-              {
-                usersList && usersList.map((user) => {
-                    return <div className="flex listChild">
-                        <div>{user.first_name} {user.last_name}</div>
-                        <img alt="not found" src={user.avatar} />
-                    </div>
-                })
-              }
+                <UsersList usersList={usersList} />
             </InfiniteScroll>
         </div>
     </div>

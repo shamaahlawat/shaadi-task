@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { RESET_REDUX_STATE, UPDATE_AUTH_STATE,FETCH_USERS_LIST,USERS_LIST_FETCHED,MORE_USERS_FETCHED } from './actionTypes'
+import { RESET_REDUX_STATE, UPDATE_AUTH_STATE,FETCHING_USERS_LIST,USERS_LIST_FETCHED,MORE_USERS_FETCHED } from './actionTypes'
 import { setDataInLocalStorage } from '../dataUtility'
 import { LOCAL_STORAGE } from '../../config/constants'
 import { uniqueId } from '../../config/utils'
+import { BASE_URL } from '../../config/urls';
 
 export const resetReduxState = () => {
   localStorage.removeItem("LOCAL_STORAGE.AWESOLIST_ADMIN")
@@ -61,7 +62,7 @@ export const fetchMoreListData = (data) => {
   return function (dispatch) {
     axios({
       method: 'GET',
-      url: `https://reqres.in/api/users?page=${data}`,
+      url: `${BASE_URL}/api/users?page=${data}`,
       validateStatus: status => {
         return ((status >= 200 && status < 300) || status === 412);
       },

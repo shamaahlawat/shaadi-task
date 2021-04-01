@@ -7,7 +7,8 @@ const states = {
   authDetails: {
     adminId: adminDetails && adminDetails.adminId ? adminDetails.adminId : null,
     token: adminDetails && adminDetails.token ? adminDetails.token : null,
-    userDetails:[]
+    userDetails:[],
+    fetchUserLoading:false
   }
 }
 
