@@ -29,3 +29,15 @@
         padding:10px
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .homeContainer {
+        .listParent{
+            width: 100%;
+            border: 1px solid grey;
+            display: flex;
+            margin: 0px; 
+            flex-direction: column;
+        }
+    }
+  }
