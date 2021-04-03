@@ -1,7 +1,6 @@
 
+Video 
 https://user-images.githubusercontent.com/26778977/113475486-a092a300-9493-11eb-9e95-4e6ae241c84b.mov
-
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
